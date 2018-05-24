@@ -115,6 +115,8 @@ class Agenda extends React.Component {
           key={dayKey + '_' + idx}
           className={userProps.className}
           style={userProps.style}
+          onClick={e => this._select(event, e)}
+          onDoubleClick={e => this._doubleClick(event, e)}
         >
           {first}
           <td className="rbc-agenda-time-cell">
@@ -193,6 +195,14 @@ class Agenda extends React.Component {
     } else {
       removeClass(header, 'rbc-header-overflowing')
     }
+  }
+
+  _select = (...args) => {
+    notify(this.props.onSelectEvent, args)
+  }
+
+  _doubleClick = (...args) => {
+    notify(this.props.onDoubleClickEvent, args)
   }
 }
 
