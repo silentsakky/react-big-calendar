@@ -213,6 +213,7 @@ export default class TimeGrid extends Component {
       eventPropGetter,
       showMultiDayTimes,
       longPressThreshold,
+      messages,
     } = this.props
 
     width = width || this.state.gutterWidth
@@ -277,6 +278,7 @@ export default class TimeGrid extends Component {
           onDoubleClickEvent={this.props.onDoubleClickEvent}
           onDrillDown={this.props.onDrillDown}
           getDrilldownView={this.props.getDrilldownView}
+          messages={messages}
         />
         <div ref="content" className="rbc-time-content">
           <TimeGutter

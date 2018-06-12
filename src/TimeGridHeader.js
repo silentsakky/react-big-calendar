@@ -4,6 +4,7 @@ import scrollbarSize from 'dom-helpers/util/scrollbarSize'
 import React from 'react'
 
 import dates from './utils/dates'
+import message from './utils/messages'
 import { elementType, accessor, dateFormat } from './utils/propTypes'
 import localizer from './localizer'
 import DateContentRow from './DateContentRow'
@@ -51,6 +52,8 @@ class TimeGridHeader extends React.Component {
     onDoubleClickEvent: PropTypes.func,
     onDrillDown: PropTypes.func,
     getDrilldownView: PropTypes.func.isRequired,
+
+    messages: PropTypes.object,
   }
   static defaultProps = {
     headerComponent: Header,
@@ -148,6 +151,7 @@ class TimeGridHeader extends React.Component {
       eventComponent,
       dateCellWrapperComponent,
       eventWrapperComponent,
+      messages,
     } = this.props
 
     let style = {}
@@ -161,7 +165,9 @@ class TimeGridHeader extends React.Component {
         style={style}
         className={cn('rbc-time-header', isOverflowing && 'rbc-overflowing')}
       >
-        <div className="rbc-label rbc-time-header-gutter" style={{ width }} />
+        <div className="rbc-label rbc-time-header-gutter" style={{ width }}>
+          {message(messages).allDay}
+        </div>
 
         <div className="rbc-time-header-content">
           <div className="rbc-row rbc-time-header-cell">
